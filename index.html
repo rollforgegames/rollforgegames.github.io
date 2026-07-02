@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RollForge Games</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ===================== NAVBAR ===================== -->
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="#top" class="navbar__logo" id="logo-link" aria-label="RollForge Games - Inicio">
+        <img src="assets/logo.png" alt="RollForge Games" id="logo-img"
+          onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='inline-flex';">
+        <span id="logo-fallback" class="logo-fallback">RollForge&nbsp;Games</span>
+      </a>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="navbar__right" id="navbarRight">
+        <a href="#games" class="navbar__link" data-i18n="nav.games">Juegos</a>
+
+        <div class="dropdown" id="playDropdown">
+          <button class="navbar__link dropdown__trigger" id="playDropdownTrigger" aria-haspopup="true"
+            aria-expanded="false">
+            <span data-i18n="nav.play_now">Jugar ahora</span> <span class="dropdown__arrow">▾</span>
+          </button>
+          <div class="dropdown__menu" id="playDropdownMenu">
+            <!-- Se rellena dinámicamente con JS a partir de games.js -->
+          </div>
+        </div>
+
+        <div class="dropdown" id="langDropdown">
+          <button class="navbar__link dropdown__trigger lang-trigger" id="langDropdownTrigger" aria-haspopup="true"
+            aria-expanded="false" style="font-size: 0.95rem;">
+            <span id="currentLangLabel">ES</span> <span class="dropdown__arrow">▾</span>
+          </button>
+          <div class="dropdown__menu dropdown__menu--lang" id="langDropdownMenu">
+            <button class="dropdown__item lang-option" data-lang="es"><img src="https://flagcdn.com/16x12/es.png"
+                alt="ES"
+                style="display:inline-block; vertical-align:middle; margin-right:8px; width:16px; height:12px;">
+              Español</button>
+            <button class="dropdown__item lang-option" data-lang="en"><img src="https://flagcdn.com/16x12/gb.png"
+                alt="EN"
+                style="display:inline-block; vertical-align:middle; margin-right:8px; width:16px; height:12px;">
+              English</button>
+            <button class="dropdown__item lang-option" data-lang="ru"><img src="https://flagcdn.com/16x12/ru.png"
+                alt="RU"
+                style="display:inline-block; vertical-align:middle; margin-right:8px; width:16px; height:12px;">
+              Русский</button>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div id="top"></div>
+
+  <!-- ===================== HERO / DESCRIPCIÓN ===================== -->
+  <section class="hero">
+    <div class="hero__inner">
+      <h1 class="hero__title hero__title--custom">RollForge</h1>
+      <p class="hero__text" data-i18n="hero.description">
+        RollForge Games ha sido creada con una idea clara: proporcionar experiencias de juego web y entretenimiento.
+        Con varias ideas y varios juegos distintos, RollForge Games es un portal que ofrece diferentes juegos basados
+        en juegos de rol, juegos de mesa, experiencias, etc.
+        Completamente gratis, sin micropagos ni suscripciones, solo selecciona el juego que quieras, ¡y diviértete!
+      </p>
+    </div>
+    <div class="hero__glow"></div>
+  </section>
+
+  <!-- ===================== GAMES ===================== -->
+  <section class="games" id="games">
+    <h2 class="section-title" data-i18n="games.section_title">Nuestros Juegos</h2>
+    <p class="section-subtitle" data-i18n="games.section_subtitle">Haz clic en una carta para descubrir más</p>
+
+    <div class="games__grid" id="gamesGrid">
+      <!-- Las cards se generan dinámicamente con JS a partir de games.js -->
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__contact">
+        <h3 data-i18n="footer.contact_title">Contacto</h3>
+        <p>
+          <span data-i18n="footer.email_label">Email:</span>
+          <a href="mailto:rollforgegamez@gmail.com" id="footerEmail">rollforgegamez@gmail.com</a>
+        </p>
+      </div>
+
+      <div class="footer__social">
+        <h3 data-i18n="footer.follow_us">Síguenos</h3>
+        <a href="https://instagram.com/rollforge.games" target="_blank" rel="noopener noreferrer"
+          class="footer__instagram" id="footerInstagram">
+          <svg viewBox="0 0 448 512" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path
+              d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+          </svg>
+          <span>@rollforge.games</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>&copy; <span id="year"></span> RollForge Games. <span data-i18n="footer.rights">Todos los derechos
+          reservados.</span></p>
+    </div>
+  </footer>
+
+  <script src="js/games.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
