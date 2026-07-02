@@ -13,6 +13,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'rollstories-font';
+  src: url('../assets/fonts/rollstories-font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --bg: #0a0a0d;
   --bg-elevated: #14141a;
@@ -252,36 +260,24 @@ img {
   z-index: 2;
 }
 
-.hero__title {
-  font-family: var(--font-title);
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
-  color: #ffffff;
-  letter-spacing: 1px;
-  margin-bottom: 1.4rem;
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-}
-
-.hero__title--custom {
-  font-family: 'RollForgeCustom', var(--font-title);
-}
-
-.hero__text {
-  color: var(--text-muted);
-  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-  font-weight: 300;
-  white-space: pre-line;
+.hero__logo-image {
+  display: block;
+  margin: 0 auto;
+  width: clamp(150px, 40vw, 50px);
+  height: auto;
+  margin-bottom: 1.5rem;
+  filter: brightness(1.2);
 }
 
 .hero__glow {
-  position: absolute;
-  top: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, transparent 70%);
-  z-index: 1;
-  pointer-events: none;
+  display: none; /* Eliminar el brillo blanco */
+}
+
+.hero__text {
+  color: var(--text-main); /* Cambiado de --text-muted para más brillo */
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 300;
+  white-space: pre-line;
 }
 
 /* ============================= GAMES ============================= */
@@ -359,7 +355,7 @@ img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition);
+  transition: transform .25s ease;
 }
 
 .game-card:hover .game-card__image-wrap img {
@@ -385,10 +381,41 @@ img {
   opacity: 0.5;
 }
 
+.game-card__text-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-family: 'rollstories-font';
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--accent);
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #232030, #17151f);
+  letter-spacing: 0.05em;
+  font-weight: normal;
+}
+
+.game-card:hover .game-card__text-display {
+  /* Sin efecto de zoom */
+}
+
 .game-card__title-bar {
   padding: 1rem 1.2rem;
   background: var(--bg-card);
   border-top: 1px solid var(--border-subtle);
+}
+
+.game-card__title-bar--minimal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1rem;
+}
+
+.game-card__title-bar--minimal .game-card__hint {
+  margin-top: 0;
 }
 
 .game-card__title {

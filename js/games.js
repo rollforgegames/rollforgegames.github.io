@@ -9,8 +9,8 @@
 const GAMES = [
   {
     id: "rollstories",
-    name: "RollStories", // TODO: sustituir por el nombre real
-    image: "assets/games/rollstories.png", // TODO: ruta a la imagen, ej: "assets/games/mi-juego.jpg"
+    name: "RollStories",
+    image: null, // Mostrar nombre con tipografía personalizada
     link: "https://jorgeortizbaz.github.io/rollstories/", // TODO: sustituir por el enlace real al juego
     summary: {
       es: "Cortas historias de rol donde podrás experimentar la experiencia en un simple sistema, donde la toma de decisones y el resultado de los dados determinarán el rumbo de la historia. ¡Explora, decide y diviértete!",

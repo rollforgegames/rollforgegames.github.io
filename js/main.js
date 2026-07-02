@@ -18,9 +18,21 @@ function renderGameCards(lang) {
 
     const imageContent = game.image
       ? `<img src="${game.image}" alt="${game.name}">`
+      : game.id === "rollstories"
+      ? `<div class="game-card__text-display">${game.name}</div>`
       : `<div class="game-card__placeholder">
            <span class="dice">🎲</span>
            <span>${lang === "en" ? "Image coming soon" : lang === "ru" ? "Изображение скоро появится" : "Imagen próximamente"}</span>
+         </div>`;
+
+    // Para rollstories, mostrar solo el hint sin el nombre
+    const titleBar = game.id === "rollstories"
+      ? `<div class="game-card__title-bar game-card__title-bar--minimal">
+           <div class="game-card__hint" data-i18n="games.front_hint">${TRANSLATIONS[lang]?.["games.front_hint"] || ""}</div>
+         </div>`
+      : `<div class="game-card__title-bar">
+           <div class="game-card__title">${game.name}</div>
+           <div class="game-card__hint" data-i18n="games.front_hint">${TRANSLATIONS[lang]?.["games.front_hint"] || ""}</div>
          </div>`;
 
     card.innerHTML = `
@@ -29,10 +41,7 @@ function renderGameCards(lang) {
           <div class="game-card__image-wrap">
             ${imageContent}
           </div>
-          <div class="game-card__title-bar">
-            <div class="game-card__title">${game.name}</div>
-            <div class="game-card__hint" data-i18n="games.front_hint">${TRANSLATIONS[lang]?.["games.front_hint"] || ""}</div>
-          </div>
+          ${titleBar}
         </div>
         <div class="game-card__back">
           <div>
@@ -62,7 +71,7 @@ function attachCardListeners() {
         e.stopPropagation();
         const link = playBtn.getAttribute("data-link");
         if (link && link !== "#") {
-          window.open(link, "_blank", "noopener,noreferrer");
+          window.location.href = link;
         }
         return;
       }
@@ -85,7 +94,7 @@ function renderPlayDropdown(lang) {
     item.textContent = game.name;
     item.addEventListener("click", () => {
       if (game.link && game.link !== "#") {
-        window.open(game.link, "_blank", "noopener,noreferrer");
+        window.location.href = game.link;
       } else {
         // Si aún no hay enlace, llevar a la sección de juegos
         document.getElementById("games")?.scrollIntoView({ behavior: "smooth" });
@@ -157,6 +166,15 @@ function setupMobileMenu() {
     const isOpen = navRight.classList.toggle("open");
     toggle.setAttribute("aria-expanded", String(isOpen));
   });
+
+  // Cerrar menú móvil al hacer clic en "Juegos"
+  const gamesLink = navRight.querySelector('a[href="#games"]');
+  if (gamesLink) {
+    gamesLink.addEventListener("click", () => {
+      navRight.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  }
 }
 
 /* ---------- Cerrar dropdowns al hacer clic fuera ---------- */
